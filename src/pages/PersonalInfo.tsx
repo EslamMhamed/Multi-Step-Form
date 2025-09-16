@@ -32,7 +32,7 @@ function PersonalInfo() {
 
   function nextPage(e:React.FormEvent){
     e.preventDefault()
-    navigate("address")
+    navigate("/address")
   }
 
   return (
