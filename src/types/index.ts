@@ -26,4 +26,4 @@ export type FormAction = {
 } | {
   type: "UPDATE_PREFERENCES",
   payload: Partial<FormData["preferences"]>
-}
+} | {type : "RESET_FORM"}

@@ -50,6 +50,9 @@ export function formReducer(state:FormData, action:FormAction){
                 }
             }
 
+            case "RESET_FORM":
+            return intialFormState
+
         default: return state
     }
     
