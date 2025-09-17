@@ -8,8 +8,8 @@
 -  `react-router-dom` for step navigation
 
 ## Getting Started
-To run the project locally:
-git clone https://github.com/EslamMhamed/Multi-Step-Form.git
-cd Multi-Step-Form
-npm install
-npm run dev
+# To run the project locally:
+# git clone https://github.com/EslamMhamed/Multi-Step-Form.git
+# cd Multi-Step-Form
+# npm install
+# npm run dev
