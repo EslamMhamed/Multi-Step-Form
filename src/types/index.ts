@@ -4,7 +4,7 @@ export type FormData = {
     lastName: string,
     email: string,
   },
-  addreesInfo : {
+  addressInfo : {
     street: string,
     city: string,
     zipCode: string,
@@ -22,7 +22,7 @@ export type FormAction = {
   payload: Partial<FormData["personalInfo"]>
 } | {
   type: "UPDATE_ADDRESS_INFO",
-  payload: Partial<FormData["addreesInfo"]>
+  payload: Partial<FormData["addressInfo"]>
 } | {
   type: "UPDATE_PREFERENCES",
   payload: Partial<FormData["preferences"]>

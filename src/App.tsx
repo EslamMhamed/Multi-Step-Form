@@ -5,6 +5,7 @@ import PersonalInfo from "./pages/PersonalInfo"
 import Address from "./pages/Address"
 import Preferences from "./pages/Preferences"
 import Summary from "./pages/Summary"
+import { FormProvider } from "./context/FormContext"
 
 function App() {
 
@@ -13,13 +14,14 @@ function App() {
       {index: true, element:<PersonalInfo/>},
       {path:"/address", element:<Address/>},
       {path:"/preferences", element:<Preferences/>},
-      {path:"/address", element:<Address/>},
       {path:"/summary", element:<Summary/>},
     ]}
   ])
 
   return (
-    <RouterProvider router={router} />
+    <FormProvider >
+      <RouterProvider router={router} />
+    </FormProvider>
   )
 }
 

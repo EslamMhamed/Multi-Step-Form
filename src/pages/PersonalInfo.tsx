@@ -1,25 +1,14 @@
-import React, { useReducer } from "react"
 import { useNavigate } from "react-router-dom"
-import type { FormAction, FormData } from "../types"
+import { useFormContext } from "../context/FormContext"
 
-
-
-
-const initialPersonalInfo:FormData["personalInfo"]  = {
-  firstName: "",
-  lastName: "",
-  email: "",
-}
 
 function PersonalInfo() {
 
-  const [state, dispatch] =useReducer(personalInfoReducer, initialPersonalInfo)
+  const {dispatch, state} = useFormContext()
 
   const navigate= useNavigate()
 
-  function personalInfoReducer(state: FormData["personalInfo"], action:FormAction){
-    return {...state, ...action.payload }
-  }
+
 
   function nextPage(e:React.FormEvent){
     e.preventDefault()
@@ -35,12 +24,12 @@ function PersonalInfo() {
           type: "UPDATE_PERSONAL_INFO",
           payload: {firstName: e.target.value}
         })}
-        value={state.firstName}
+        value={state.personalInfo.firstName}
          type="text" id="firstname" name="firstname" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]"  />
       </div>
       <div className="flex flex-col gap-y-2">
         <label htmlFor="lastname" className="font-bold">Last Name</label>
-        <input value={state.lastName} type="text" id="lastname" name="lastname" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  " onChange={(e) => dispatch({
+        <input value={state.personalInfo.lastName} type="text" id="lastname" name="lastname" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  " onChange={(e) => dispatch({
           type: "UPDATE_PERSONAL_INFO",
           payload: {lastName: e.target.value}
         })} />
@@ -50,9 +39,9 @@ function PersonalInfo() {
         <input onChange={(e) => dispatch({
           type: "UPDATE_PERSONAL_INFO",
           payload: {email: e.target.value}
-        })} value={state.email} type="email" id="email" name="email" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  "   />
+        })} value={state.personalInfo.email} type="email" id="email" name="email" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  "   />
       </div>
-      <button className="p-2 border border-[#ffeb00] rounded-sm transition-colors hover:bg-[#ffeb00] hover:text-[#2a004e]  ">Next</button>
+      <button className="p-2 border border-[#ffeb00] rounded-sm transition-colors hover:bg-[#ffeb00] hover:text-[#2a004e]  " >Next</button>
     </form>
   )
 }

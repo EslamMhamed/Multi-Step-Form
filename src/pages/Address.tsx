@@ -1,28 +1,12 @@
-import { useReducer } from "react"
 import { useNavigate } from "react-router-dom"
-import type { FormAction, FormData } from "../types"
+import { useFormContext } from "../context/FormContext"
 
-
-
-
-
-
-
-const initialAddreesInfo= {
-  street : "",
-  city : "",
-  zipCode : "",
-}
 
 function Address() {
 
+  const {dispatch, state} = useFormContext()
+
   const navigation = useNavigate()
-
-  const [state, dispatch] = useReducer(AddressReducer, initialAddreesInfo)
-
-  function AddressReducer(state: FormData["addreesInfo"], action: FormAction){
-    return {...state, ...action.payload}
-  }
 
   function nextPage(e:React.FormEvent){
     e.preventDefault()
@@ -38,12 +22,12 @@ function Address() {
           type: "UPDATE_ADDRESS_INFO",
           payload: {street: e.target.value}
         })}
-        value={state.street}
+        value={state.addressInfo.street}
          type="text" id="street" name="street" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]"  />
       </div>
       <div className="flex flex-col gap-y-2">
         <label htmlFor="city" className="font-bold">City</label>
-        <input value={state.city} type="text" id="city" name="city" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  " onChange={(e) => dispatch({
+        <input value={state.addressInfo.city} type="text" id="city" name="city" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  " onChange={(e) => dispatch({
           type: "UPDATE_ADDRESS_INFO",
           payload: {city: e.target.value}
         })} />
@@ -53,11 +37,11 @@ function Address() {
         <input onChange={(e) => dispatch({
           type: "UPDATE_ADDRESS_INFO",
           payload: {zipCode: e.target.value}
-        })} value={state.zipCode} type="text" id="zip" name="zip" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  "   />
+        })} value={state.addressInfo.zipCode} type="text" id="zip" name="zip" required className="border-l border-[#ffeb00] p-2 focus:rounded-sm focus:text-[#2a004e] text-[#ffeb00] font-bold outline-none focus:bg-[#ffeb00]  "   />
       </div>
       <div className="flex gap-4 *:basis-1/2">
         <button className="p-2 border border-[#ffeb00] rounded-sm transition-colors hover:bg-[#ffeb00] hover:text-[#2a004e]   " 
-        onClick={()=> navigation("/")}
+        onClick={()=> navigation("/")} type="button"
         >Back</button>
         <button className="p-2 border border-[#ffeb00] rounded-sm transition-colors hover:bg-[#ffeb00] hover:text-[#2a004e]   "
         >Next</button>
