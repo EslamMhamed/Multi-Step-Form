@@ -1,20 +1,12 @@
 import { useReducer } from "react"
 import { useNavigate } from "react-router-dom"
+import type { FormAction, FormData } from "../types"
 
 
 
-type FormData = {
-  addreesInfo : {
-    street: string,
-    city: string,
-    zipCode: string,
-  }
-}
 
-type FormAction = {
-  type: "UPDATE_ADDRESS_INFO",
-  payload: Partial<FormData["addreesInfo"]>
-}
+
+
 
 const initialAddreesInfo= {
   street : "",
@@ -34,7 +26,7 @@ function Address() {
 
   function nextPage(e:React.FormEvent){
     e.preventDefault()
-    navigation("/Preferences")
+    navigation("/preferences")
   }
 
   return (

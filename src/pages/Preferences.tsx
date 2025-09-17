@@ -1,19 +1,10 @@
 import { useReducer } from "react"
 import { useNavigate } from "react-router-dom"
+import type { FormAction, FormData } from "../types"
 
 
-  type FormData = {
-  preferences : {
-    newsletter: boolean,
-    notifications : boolean,
-    theme: "light" | "dark"
-  }
-}
 
-type FormAction = {
-  type: "UPDATE_PREFERENCES",
-  payload: Partial<FormData["preferences"]>
-}
+
 
 const initialpreferences : FormData["preferences"]= {
   newsletter: false,
@@ -47,17 +38,17 @@ function Preferences() {
           payload: {newsletter: e.target.checked}
         })}
         checked={state.newsletter}
-         type="checkbox" id="newsletter" name="newsletter" required className="appearance-none size-5 bg-[#9acbd0] rounded-full checked:bg-[#ffeb00] duration-75 cursor-pointer "  />
+         type="checkbox" id="newsletter" name="newsletter"  className="appearance-none size-5 bg-[#9acbd0] rounded-full checked:bg-[#ffeb00] duration-75 cursor-pointer "  />
       </div>
 
       <div className="flex  gap-2 items-center">
-        <label htmlFor="notification" className="font-bold order-1 cursor-pointer">Notifications </label>
+        <label htmlFor="notifications" className="font-bold order-1 cursor-pointer">Notifications </label>
         <input onChange={(e) => dispatch({
           type: "UPDATE_PREFERENCES",
           payload: {notifications: e.target.checked}
         })}
         checked={state.notifications}
-         type="checkbox" id="notifications" name="notifications" required className="appearance-none size-5 bg-[#9acbd0] rounded-full checked:bg-[#ffeb00] duration-75 cursor-pointer "  />
+         type="checkbox" id="notifications" name="notifications"  className="appearance-none size-5 bg-[#9acbd0] rounded-full checked:bg-[#ffeb00] duration-75 cursor-pointer "  />
       </div>
 
       <div className="flex flex-col gap-4">
