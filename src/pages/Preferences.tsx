@@ -74,7 +74,7 @@ function Preferences() {
          <span>Light</span>
         </div>
 
-        <div className="flex gap-2 items-center">
+        <div  className="flex gap-2 items-center">
         <input onChange={(e) => dispatch({
           type: "UPDATE_PREFERENCES",
           payload: {theme: e.target.value as "light" | "dark"}
